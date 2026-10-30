@@ -14,4 +14,5 @@ public class ComputerAddRequestDTO {
     private String ram;
     private String cpu;
     private String isNew;
+    private Integer quantity;
 }

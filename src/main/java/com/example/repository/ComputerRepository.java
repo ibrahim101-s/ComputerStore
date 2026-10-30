@@ -12,4 +12,5 @@ import java.util.List;
 public interface ComputerRepository extends JpaRepository<ComputerEntity, Long> {
     Page<ComputerEntity> findByBrandContainingIgnoreCaseOrModelContainingIgnoreCase(String brand, String model, Pageable pageable);
     List<ComputerEntity> findByUsernameIgnoreCase(String username);
+    Page<ComputerEntity> findByQuantityGreaterThan(Integer minQuantity, Pageable pageable);
 }

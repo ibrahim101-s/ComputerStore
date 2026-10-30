@@ -17,4 +17,5 @@ public class ComputerResponseDTO {
     private String username;
     private String phone;
     private String isNew;
+    private Integer quantity;
 }

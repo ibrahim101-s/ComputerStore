@@ -43,6 +43,7 @@ public class ComputerService {
                 .username(username)
                 .phone(user.getPhone())
                 .isNew(request.getIsNew())
+                .quantity(request.getQuantity() != null ? request.getQuantity() : 1)
                 .build();
 
         return mapToDTO(computerRepository.save(entity));
@@ -50,7 +51,7 @@ public class ComputerService {
 
     @Transactional(readOnly = true)
     public Page<ComputerResponseDTO> getAllComputers(Pageable pageable) {
-        return computerRepository.findAll(pageable).map(this::mapToDTO);
+        return computerRepository.findByQuantityGreaterThan(0, pageable).map(this::mapToDTO);
     }
 
     @Transactional(readOnly = true)
@@ -83,6 +84,7 @@ public class ComputerService {
         entity.setRam(request.getRam());
         entity.setCpu(request.getCpu());
         entity.setIsNew(request.getIsNew());
+        entity.setQuantity(request.getQuantity());
 
         return mapToDTO(computerRepository.save(entity));
     }
@@ -119,6 +121,7 @@ public class ComputerService {
         dto.setUsername(entity.getUsername());
         dto.setPhone(entity.getPhone());
         dto.setIsNew(entity.getIsNew());
+        dto.setQuantity(entity.getQuantity());
         return dto;
     }
 }

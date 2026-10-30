@@ -28,4 +28,5 @@ public class ComputerEntity {
     private String isNew;
     private String username;
     private String phone;
+    private Integer quantity;
 }
