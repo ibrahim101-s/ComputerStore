@@ -24,4 +24,7 @@ public class UserEntity {
 
     @Column(unique = true)
     private String phone;
+
+    @Column(updatable = true)
+    private String name;
 }

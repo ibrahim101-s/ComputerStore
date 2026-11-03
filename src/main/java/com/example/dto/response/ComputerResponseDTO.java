@@ -1,5 +1,6 @@
 package com.example.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
@@ -8,6 +9,7 @@ public class ComputerResponseDTO {
     private String brand;
     private String model;
     private Double price;
+    private String description;
     private String imageUrl;
     private String storage;
     private String os;

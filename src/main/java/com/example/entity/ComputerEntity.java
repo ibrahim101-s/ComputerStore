@@ -1,5 +1,6 @@
 package com.example.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,4 +30,5 @@ public class ComputerEntity {
     private String username;
     private String phone;
     private Integer quantity;
+    private String description;
 }

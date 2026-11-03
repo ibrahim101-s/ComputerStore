@@ -34,6 +34,7 @@ public class ComputerService {
                 .brand(request.getBrand())
                 .model(request.getModel())
                 .price(request.getPrice())
+                .description(request.getDescription())
                 .imageUrl(request.getImageUrl())
                 .storage(request.getStorage())
                 .os(request.getOs())
@@ -77,6 +78,7 @@ public class ComputerService {
         entity.setBrand(request.getBrand());
         entity.setModel(request.getModel());
         entity.setPrice(request.getPrice());
+        entity.setDescription(request.getDescription());
         entity.setImageUrl(request.getImageUrl());
         entity.setStorage(request.getStorage());
         entity.setOs(request.getOs());
@@ -112,6 +114,7 @@ public class ComputerService {
         dto.setBrand(entity.getBrand());
         dto.setModel(entity.getModel());
         dto.setPrice(entity.getPrice());
+        dto.setDescription(entity.getDescription());
         dto.setImageUrl(entity.getImageUrl());
         dto.setStorage(entity.getStorage());
         dto.setOs(entity.getOs());

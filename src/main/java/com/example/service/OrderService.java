@@ -30,6 +30,7 @@ public class OrderService {
 
         OrderEntity order = new OrderEntity();
         order.setUsername(username);
+        order.setAddress(request.getAddress());
         order.setOrderDate(LocalDateTime.now());
 
         List<OrderItemEntity> orderItems = new ArrayList<>();
@@ -51,13 +52,10 @@ public class OrderService {
                 throw new RuntimeException("Kifayət qədər stok yoxdur! " + computer.getBrand() + " " + computer.getModel() + " üçün mövcud stok: " + (computer.getQuantity() != null ? computer.getQuantity() : 0));
             }
 
-
             int newQuantity = computer.getQuantity() - requestedQty;
             if (newQuantity <= 0) {
-
                 computerRepository.delete(computer);
             } else {
-
                 computer.setQuantity(newQuantity);
                 computerRepository.save(computer);
             }

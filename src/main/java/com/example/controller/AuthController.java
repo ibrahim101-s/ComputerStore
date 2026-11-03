@@ -20,7 +20,7 @@ public class AuthController {
 
     @PostMapping("/login")
     @Operation(summary = "Sistemə daxil ol", description = "İstifadəçi adı və şifrə ilə sistemə daxil olaraq JWT token əldə edir")
-    public ResponseEntity<AuthResponseDTO> login(@Valid @RequestBody AuthRequestDTO request) {
+    public ResponseEntity<AuthResponseDTO> login(@RequestBody AuthRequestDTO request) {
         return ResponseEntity.ok(authService.login(request));
     }
 

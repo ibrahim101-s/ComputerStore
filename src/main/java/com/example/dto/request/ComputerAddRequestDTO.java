@@ -1,5 +1,6 @@
 package com.example.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 
@@ -19,7 +20,6 @@ public class ComputerAddRequestDTO {
     @NotBlank(message = "Şəkil URL-i boş ola bilməz")
     private String imageUrl;
 
-    private String description;
 
     @NotBlank(message = "RAM boş ola bilməz")
     private String ram;
@@ -42,4 +42,7 @@ public class ComputerAddRequestDTO {
     @NotNull(message = "Stok sayı daxil edilməlidir")
     @Min(value = 1, message = "Stok sayı minimum 1 olmalıdır")
     private Integer quantity;
+
+    @NotBlank(message = "Təsvir boş ola bilməz")
+    private String description;
 }

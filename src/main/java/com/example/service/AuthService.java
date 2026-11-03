@@ -20,22 +20,26 @@ public class AuthService {
     private final JwtUtil jwtUtil;
     private final AuthenticationManager authenticationManager;
 
-
     public AuthResponseDTO login(AuthRequestDTO request) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
-        );
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
+            );
+        } catch (Exception ex) {
+            throw new RuntimeException("İstifadəçi adı və ya şifrə yanlışdır!");
+        }
 
         String token = jwtUtil.generateToken(request.getUsername());
         return new AuthResponseDTO(token, request.getUsername());
     }
 
     public AuthResponseDTO register(AuthRequestDTO request) {
+
         if (userRepository.existsByUsername(request.getUsername())) {
             throw new RuntimeException("Bu istifadəçi adı artıq mövcuddur!");
         }
 
-        if (request.getPhone() != null && userRepository.existsByPhone(request.getPhone())) {
+        if (userRepository.existsByPhone(request.getPhone())) {
             throw new RuntimeException("Bu telefon nömrəsi artıq qeydiyyatdan keçib!");
         }
 
@@ -49,7 +53,5 @@ public class AuthService {
 
         String token = jwtUtil.generateToken(user.getUsername());
         return new AuthResponseDTO(token, user.getUsername());
-
     }
-
 }

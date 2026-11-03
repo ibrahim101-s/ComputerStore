@@ -21,6 +21,8 @@ public class OrderEntity {
     private String username;
     private Double totalPrice;
     private LocalDateTime orderDate;
+    private String address;
+    private String cardNumber;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
     private List<OrderItemEntity> items;

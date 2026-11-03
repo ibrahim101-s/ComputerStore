@@ -7,10 +7,10 @@ import lombok.Data;
 @Data
 public class OrderItemRequestDTO {
 
-    @NotNull(message = "Kompüter ID-si boş ola bilməz")
+    @NotNull(message = "Kompüter ID-si daxil edilməlidir")
     private Long computerId;
 
-    @NotNull(message = "Miqdar daxil edilməlidir")
-    @Min(value = 1, message = "Miqdar minimum 1 olmalıdır")
+    @NotNull(message = "Sayı daxil edilməlidir")
+    @Min(value = 1, message = "Minimum 1 ədəd sifariş edilə bilər")
     private Integer quantity;
 }
